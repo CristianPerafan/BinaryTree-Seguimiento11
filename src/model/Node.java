@@ -9,7 +9,7 @@ package model;
 
 public class Node<T extends Comparable<T>>{
 	
-	//Attributes
+	//Attributes:
 
 	private T value;
 	private Node<T> father;
@@ -20,6 +20,7 @@ public class Node<T extends Comparable<T>>{
 	public Node(T value) {
 		this.value = value;
 	}
+	
 	
 	
 	//
