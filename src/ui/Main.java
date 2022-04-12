@@ -18,22 +18,21 @@ public class Main {
 		
 		binaryTree.addAnElement(10);
 		binaryTree.addAnElement(20);
-		//binaryTree.addAnElement(5);
+		binaryTree.addAnElement(5);
 		binaryTree.toShowBinaryTree();
 		
 		binaryTree.toRemoveAndElement(20);
-		//binaryTree.addAnElement(12);
+		binaryTree.addAnElement(12);
 		binaryTree.toShowBinaryTree();
-		/*
+		
 		binaryTree.addAnElement(16);
 		binaryTree.addAnElement(17);
 		binaryTree.addAnElement(18);
+		binaryTree.toShowBinaryTree();
+		binaryTree.toRemoveAndElement(17);
+		binaryTree.toShowBinaryTree();
 		binaryTree.addAnElement(15);
 		binaryTree.addAnElement(5);
-		*/
-
-		
-		
 		
 	}
 

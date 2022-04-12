@@ -158,33 +158,6 @@ public class BinaryTree<T extends Comparable<T>>{
 			}
 		}
 	}
-	public boolean toFindAnElement(Node<T> originRoot,Node<T> nodeSearched) {
-		
-		Node<T> aux = rootOfTree;
-		
-		while(aux.getValue() != nodeSearched.getValue() ) {
-			
-			if(nodeSearched.getValue().compareTo(aux.getValue())> 0) {
-				aux = aux.getRightSon();
-			}
-			else {
-				aux = aux.getLeftSon();
-			}
-			
-			if(aux == null) {
-				return false;
-			}
-			
-			
-		}
-		
-		return true;
-	}
-	
-	
-	
-	
-
 	
 	
 	public void printForLevels(Node<T> root) {
