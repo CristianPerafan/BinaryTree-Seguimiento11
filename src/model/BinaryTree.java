@@ -22,28 +22,8 @@ public class BinaryTree<T extends Comparable<T>>{
 	
 	
 	
-	public void preOrder2(Node<T> originRoot) {
-		 if(originRoot != null) {
-			 System.out.println("xxx"+originRoot.getValue().toString());
-			 
-			 if(originRoot.getLeftSon() != null) {
-				 System.out.println("xx"+originRoot.getLeftSon().getValue());
-				 preOrder(originRoot.getLeftSon());
-				 
-			 }
-			 
-			 if(originRoot.getRightSon() != null) {
-				 System.out.println("x"+originRoot.getRightSon().getValue());
-				 preOrder(originRoot.getRightSon());
-			 }
-		 }
-			
-	 }
+	
 
-	
-	
-	
-	
 	public void addAnElement(Node<T> originRoot,T element) {
 		
 		if(rootOfTree == null) {
