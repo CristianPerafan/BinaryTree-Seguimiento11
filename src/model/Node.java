@@ -59,6 +59,10 @@ public class Node<T extends Comparable<T>>{
 		this.rightSon = rightSon;
 	}
 	
+	public boolean isLeaf() {
+		return ((leftSon == null) && (rightSon == null));
+	}
+	
 	
 	
 	

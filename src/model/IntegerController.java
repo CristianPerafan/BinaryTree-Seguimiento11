@@ -26,7 +26,17 @@ public class IntegerController {
 		
 		Node<Integer> node = new Node<Integer>(value);
 		
-		System.out.println(bTree.toFindAndElement(root,node));
+		
+		
+		if(bTree.toDeleteAnElement(root, node)) {
+			System.out.println("The node "+value+ " has been deleted");
+			System.out.println("");
+		}
+		else {
+			System.out.println("The node "+value+" could not be deleted");
+			System.out.println("");
+		}
+		
 		
 	}
 	public void toShowBinaryTree() {

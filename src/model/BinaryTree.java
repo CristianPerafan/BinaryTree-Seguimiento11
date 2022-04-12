@@ -90,11 +90,75 @@ public class BinaryTree<T extends Comparable<T>>{
 		}
 	}
 	
+	public boolean toDeleteAnElement(Node<T> originRoot, Node<T> nodeToDelete) {
+	    Node<T> father = originRoot;
+	    Node<T> aux = originRoot;
+	    boolean isLeftSon = true;
+	    while(nodeToDelete.getValue() != aux.getValue() ) {
+	    	father = aux;
+	    	
+	    	if(nodeToDelete.getValue().compareTo(aux.getValue())<0) {
+	    		aux = aux.getLeftSon();
+	    		isLeftSon = true;
+	    	}
+	    	else {
+	    		aux = aux.getRightSon();
+	    		isLeftSon = false;
+	    	}
+	    	
+	    	if(aux == null) {
+	    		return false;
+	    	}
+	    	
+	    }
+	    
+	    if(aux.isLeaf()) {
+	    	toDeleteALeaf(father,aux,isLeftSon);
+	    }
+	    else if(aux.getLeftSon() == null || aux.getRightSon() == null) {
+	    	toTeDeleteANodeWithOnlyOneSon(father,aux,isLeftSon);
+	    }
+	    
+		return true;
+	}
 	
+	public void toDeleteALeaf(Node<T> father, Node<T> aux, boolean isLeftSon) {
+		if(aux.getValue() == rootOfTree.getValue()) {
+			rootOfTree = null;
+		}
+		else if(isLeftSon) {
+			father.setLeftSon(null);
+		}
+		else {
+			father.setRightSon(null);
+		}
+	}
 	
-	public boolean toFindAndElement(Node<T> originRoot,Node<T> nodeSearched) {
-		
-		
+	public void toTeDeleteANodeWithOnlyOneSon(Node<T> father, Node<T> aux, boolean isLeftSon) {
+		if(aux.getRightSon() == null) {
+			if(aux.getValue() == rootOfTree.getValue()) {
+				rootOfTree = aux.getRightSon();
+			}
+			else if(isLeftSon) {
+				father.setLeftSon(aux.getLeftSon());
+			}
+			else {
+				father.setRightSon(aux.getLeftSon());
+			}
+		}
+		else if(aux.getLeftSon() == null) {
+			if(aux.getValue() == rootOfTree.getValue()) {
+				rootOfTree = aux.getRightSon();
+			}
+			else if (isLeftSon){
+				father.setLeftSon(aux.getRightSon());
+			}
+			else {
+				father.setRightSon(aux.getRightSon());
+			}
+		}
+	}
+	public boolean toFindAnElement(Node<T> originRoot,Node<T> nodeSearched) {
 		
 		Node<T> aux = rootOfTree;
 		
