@@ -14,12 +14,35 @@ public class BinaryTree<T extends Comparable<T>>{
 	//Attributes: 
 	private Node<T> rootOfTree;
 	
-	private static final int COUNT = 10;
 	
 	//Constructor method: to create a binary tree.
 	public BinaryTree(){
 		
 	}
+	
+	
+	
+	public void preOrder2(Node<T> originRoot) {
+		 if(originRoot != null) {
+			 System.out.println("xxx"+originRoot.getValue().toString());
+			 
+			 if(originRoot.getLeftSon() != null) {
+				 System.out.println("xx"+originRoot.getLeftSon().getValue());
+				 preOrder(originRoot.getLeftSon());
+				 
+			 }
+			 
+			 if(originRoot.getRightSon() != null) {
+				 System.out.println("x"+originRoot.getRightSon().getValue());
+				 preOrder(originRoot.getRightSon());
+			 }
+		 }
+			
+	 }
+
+	
+	
+	
 	
 	public void addAnElement(Node<T> originRoot,T element) {
 		
@@ -27,7 +50,6 @@ public class BinaryTree<T extends Comparable<T>>{
 			rootOfTree = new Node<T>(element);
 		}
 		else {
-			
 			//To compare if the element can be a left son
 			if(originRoot.getValue().compareTo(element) > 0) {
 				if(originRoot.getLeftSon() != null) {
@@ -37,8 +59,8 @@ public class BinaryTree<T extends Comparable<T>>{
 					Node<T> aux = new Node<T>(element);
 					aux.setFather(originRoot);
 					originRoot.setLeftSon(aux);
+					rootOfTree.setLeftSon(aux);
 
-					
 				}
 				
 			}
@@ -51,7 +73,7 @@ public class BinaryTree<T extends Comparable<T>>{
 					Node<T> aux = new Node<T>(element);
 					aux.setFather(originRoot);
 					originRoot.setRightSon(aux);
-					
+					rootOfTree.setRightSon(aux);
 				}
 			}
 				
@@ -70,26 +92,38 @@ public class BinaryTree<T extends Comparable<T>>{
 	
 	
 	
-	public String toString(Node<T> originNode) {
-		String out = "";
+	public boolean toFindAndElement(Node<T> originRoot,Node<T> nodeSearched) {
 		
-		 System.out.println("- "+originNode.getValue().toString());
-		 
-		 if(originNode.getLeftSon() != null) {
-			 toString(originNode.getLeftSon());
-		 }
-		 
-		 if(originNode.getRightSon() != null){
-			 toString(originNode.getRightSon());
-		 }
 		
-		return out;
+		
+		Node<T> aux = rootOfTree;
+		
+		while(aux.getValue() != nodeSearched.getValue() ) {
+			
+			if(nodeSearched.getValue().compareTo(aux.getValue())> 0) {
+				aux = aux.getRightSon();
+			}
+			else {
+				aux = aux.getLeftSon();
+			}
+			
+			if(aux == null) {
+				return false;
+			}
+			
+			
+		}
+		
+		return true;
 	}
+	
+	
+	
 	
 
 	
 	
-	public void print2DUtil(Node<T> root,int numNodes) {
+	public void printForLevels(Node<T> root) {
 		
 		LinkedList<Node<T>> lKTreeLevels = new LinkedList<Node<T>>();
 		lKTreeLevels.add(root);
@@ -99,12 +133,9 @@ public class BinaryTree<T extends Comparable<T>>{
 		int counter = 0;
 		int height = heightOfTree(root)-1;
 		
-		//double numberOfElements = numNodes;
-		double numberOfElements =  (Math.pow(2 , (height + 1)) - 1);
+		
 		
 		while(counter <= height) {
-			
-			
 			
 			Node<T> removed = lKTreeLevels.removeFirst();
 			if(temp.isEmpty()) {
@@ -131,7 +162,6 @@ public class BinaryTree<T extends Comparable<T>>{
 			
 			 if ( lKTreeLevels.isEmpty()) {
 				    System.out.println("");
-				    // System.out.println("");
 	                lKTreeLevels = temp;
 	                temp = new LinkedList<>();
 	                counter++;
@@ -141,7 +171,7 @@ public class BinaryTree<T extends Comparable<T>>{
 		
 	
 	}
-	
+	 
 	public int heightOfTree(Node<T> root){
 	    if(root==null){
 	        return 0;
@@ -154,7 +184,23 @@ public class BinaryTree<T extends Comparable<T>>{
 			System.out.println(removed.getValue());
 		}
 	      
-	    
 	}
+	
+	 public void preOrder(Node<T> originRoot) {
+		 if(originRoot != null) {
+			 System.out.println(originRoot.getValue().toString());
+			 
+			 if(originRoot.getLeftSon() != null) {
+				 preOrder(originRoot.getLeftSon());
+			 }
+			 
+			 if(originRoot.getRightSon() != null) {
+				 preOrder(originRoot.getRightSon());
+			 }
+		 }
+			
+	 }
+	
+	
 	
 }

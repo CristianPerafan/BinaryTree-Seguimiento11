@@ -5,11 +5,9 @@ public class IntegerController {
 	//Attributes
 	private BinaryTree<Integer> bTree;
 	private Node<Integer> root;
-	private int numNodes;
 	
 	public IntegerController() {
 		bTree = new BinaryTree<Integer>();
-		numNodes = 0;
 	}
 	
 	public void addAnElement(Integer value) {
@@ -17,17 +15,34 @@ public class IntegerController {
 		if(bTree.isEmptyTheTree()) {
 			root = new Node<Integer>(value);
 			bTree.addAnElement(null,value);
-			numNodes++;
 		}
 		else {
 			bTree.addAnElement(root,value);
-			numNodes++;
 		}
 		
 	}
 	
+	public void toRemoveAndElement(Integer value) {
+		
+		Node<Integer> node = new Node<Integer>(value);
+		
+		System.out.println(bTree.toFindAndElement(root,node));
+		
+	}
 	public void toShowBinaryTree() {
-		bTree.print2DUtil(root,numNodes);
-		//out = bTree.toString();
+		
+		if(bTree.isEmptyTheTree()) {
+			System.out.println("");
+			System.out.println("The binary tree has no elements.!!!");
+		}
+		else {
+			System.out.println("*** TOUR IN PRE ORDER ***");
+			if(bTree.isEmptyTheTree()) {}
+			bTree.preOrder(root);
+			System.out.println(" ");
+			System.out.println("*** TOUR FOR LEVELS ****");
+			bTree.printForLevels(root);
+		}
+		
 	}
 }
